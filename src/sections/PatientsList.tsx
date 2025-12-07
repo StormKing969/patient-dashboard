@@ -20,7 +20,7 @@ const PatientsList = ({
         />
       </div>
 
-      <div className={"p-4 rounded-lg w-90 h-screen overflow-y-auto"}>
+      <div className={"p-4 rounded-lg w-90 h-screen min-h-[800px] overflow-y-auto"}>
         {patientsList.length === 0 ? (
           <p>No patients found.</p>
         ) : (

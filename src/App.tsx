@@ -14,11 +14,21 @@ function App() {
   const [selectedPatient, setSelectedPatient] = useState<Patient | null>(null);
 
   useEffect(() => {
-    getAllPatients().then((res) => setPatientsList(res));
+    getAllPatients().then(setPatientsList);
   }, []);
 
+  useEffect(() => {
+    if (!patientsList.length) return;
+    const match = patientsList.find((p) => p.name?.includes("Jessica Taylor"));
+    setSelectedPatient(match ?? null);
+  }, [patientsList]);
+
   return (
-    <div className={"bg-[#F6F7F8] min-h-screen max-h-[1000px] overflow-y-auto py-3 px-5"}>
+    <div
+      className={
+        "bg-[#F6F7F8] min-h-screen overflow-y-auto py-3 px-5"
+      }
+    >
       <header>
         <Navbar
           setCurrentPageId={setCurrentPageId}
